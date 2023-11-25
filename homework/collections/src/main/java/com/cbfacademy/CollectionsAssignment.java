@@ -3,8 +3,13 @@ package com.cbfacademy;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.HashSet;
+import java.util.Collections;
+import java.util.HashMap;
 
-public class CollectionsAssignment {
+public class CollectionsAssignment { // name of class {
 
     /**
      * This method removes all values from the provided list that are smaller
@@ -14,9 +19,16 @@ public class CollectionsAssignment {
      * @param list   - the list of integers
      * @param minValue the minimum value to retain
      */
+    // list of methods
     public static void removeSmallInts(List<Integer> list, int minValue) {
+
+        for (int i = list.size() - 1; i >= 0; i--) {
+            if (list.get(i) < minValue) {
+                list.remove(list.get(i));
+            } 
+        }
         // Your solution must traverse the list from last to first element
-        // removing any values less than minValue.
+        // removing any values less than minValue.  
     }
 
     /**
@@ -28,7 +40,8 @@ public class CollectionsAssignment {
      */
     public static boolean containsDuplicates(Collection<Integer> integers) {
         // Your solution must not use any loops.
-        return false;
+        Set<Integer> uniqueElemets = new HashSet<>(integers);
+        return uniqueElemets.size() != integers.size();
     }
 
     /**
@@ -48,7 +61,15 @@ public class CollectionsAssignment {
      */
     public static ArrayList<Integer> inEither(Collection<Integer> ints1, Collection<Integer> ints2) {
         // This must be done with no loops.
-        return new ArrayList<Integer>();
+
+        Set<Integer> noDupeSet = new HashSet <>();
+        noDupeSet.addALL(ints1); 
+        noDupeSet.addAll(ints2);
+        
+        List<Integer> organisedList = new ArrayList<>(noDupeSet);
+
+        Collections.sort(organisedList);
+        return new ArrayList<>(organisedList);
     }
 
     /**
@@ -66,7 +87,14 @@ public class CollectionsAssignment {
      */
     public static ArrayList<Integer> inBoth(Collection<Integer> ints1, Collection<Integer> ints2) {
         // This must be done with no loops.
-        return new ArrayList<>();
+        Set <Integer> ints1Set = new HashSet <> (ints1);
+        Set <Integer> ints2Set = new HashSet <> (ints2);
+        Set <Integer> commonValues = new HashSet <> (ints1Set);
+        ints1Set.retainAll(ints2Set);
+        List<Integer> commonValues = new ArrayList <>(ints1Set);
+        Collections.sort(commonValues);
+        return new ArrayList<>(commonValues);
+
     }
 
     /**
@@ -85,10 +113,24 @@ public class CollectionsAssignment {
         // your counts to find the largest. You'll need a collection that allows
         // you to store a mapping from Strings to counts.
         // No nested loops or non-enhanced for-loops are allowed.
-        return "";
-    }
+      // Count occurrences of each string
+        Map<String, Integer> counts = new HashMap<>();
+        for (String str : list) {
+            counts.put(str, counts.getOrDefault(str, 0) + 1);
+        }
 
-    public static String getName() {
-        return "Collections Assignment";
-    }
+        // Find the most frequently occurring string
+        String mostFrequentString = "";
+        int maxCount = 0;
+        for (Map.Entry<String, Integer> entry : counts.entrySet()) {
+            if (entry.getValue() > maxCount) {
+                maxCount = entry.getValue();
+                mostFrequentString = entry.getKey();
+            }
+        }
+
+        return mostFrequentString;
+
+       
+        
 }
