@@ -17,6 +17,8 @@ For the assignment below, we've provided the starter project above.
 
 What methods would a class that implements the `java.lang.CharSequence` interface have to implement?
 
+//Returning the length (no.of characters of the sequence), accessing individual characters by index, obtaining a subsequence, and converting the character sequence to a string.//
+
 Inside the `words` package, create a class `ReverseCharSequence` that implements the `CharSequence` interface found in the `java.lang` package. 
 Your implementation should return the string backwards. 
 
