@@ -6,7 +6,7 @@ import java.util.Properties;
 public class PropertiesFileReader {
 
     public static void main(String[] args) {
-        String filepath = "path/to/example.properties";
+        String filepath = "homework/input-output/properties.java";
 
         // Create Properties object
         Properties properties = new Properties();
